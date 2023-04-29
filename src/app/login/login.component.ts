@@ -8,6 +8,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
+  hide = true;
+
 
   form: FormGroup;
   private formSubmitAttempt: boolean ;
