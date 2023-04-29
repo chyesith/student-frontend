@@ -26,7 +26,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class CoursesComponent  {
-  displayedColumns: string[] = ['title', 'description', 'fee'];
+  displayedColumns: string[] = ['title', 'description', 'fee' , 'actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {
