@@ -1,1 +1,30 @@
-<p>profile works!</p>
+<app-navbar></app-navbar>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Student Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <p>
+      <mat-form-field class="full-width-input">
+        <mat-label>Student Id</mat-label>
+        <input matInput disabled value={{studentId}}>
+      </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field  class="full-width-input" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input [disabled] = !validation matInput>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="full-width-input" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input [disabled] = !validation matInput>
+        </mat-form-field>
+      </p>
+      <button mat-raised-button color="primary">Edit</button>
+      <button mat-raised-button color="primary" *ngIf="validation">Save</button>
+    </form>
+  </mat-card-content>
+</mat-card>

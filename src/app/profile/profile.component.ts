@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-
+  studentId = "c340934";
+  validation= false;
 }
