@@ -13,6 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import { RegistrationComponent } from './registration/registration.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 
@@ -33,7 +34,8 @@ import { RegistrationComponent } from './registration/registration.component';
     MatButtonModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
