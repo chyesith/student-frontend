@@ -1,0 +1,24 @@
+.primary-chip {
+  color: black !important;
+  font-weight: bold!important;
+  background-color: rgba(52, 250, 42, 0.42) !important;
+}
+
+.secondary-chip {
+  color: black !important;
+  font-weight: bold!important;
+  background-color: rgba(241, 56, 56, 0.42) !important;
+}
+
+
+.label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+}

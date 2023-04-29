@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<mat-card>
+  <mat-card-content>You need to pay outstanding course and library fee before eligible to graduate
+    <mat-divider></mat-divider>
+    <section>
+      <div class="label">Your current status :</div>
+      <div class="button-row">
+        <mat-chip-listbox aria-label="selection">
+          <mat-chip-option  *ngIf="graduationEligibility" class="primary-chip" color="primary">Eligible</mat-chip-option>
+          <mat-chip-option *ngIf="!graduationEligibility" class="secondary-chip" color="warn">Not Eligible</mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+    </section>
+
+  </mat-card-content>
+</mat-card>

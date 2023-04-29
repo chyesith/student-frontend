@@ -16,6 +16,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { CoursesComponent } from './courses/courses.component';
 import {MatTableModule} from "@angular/material/table";
+import { EnrollmentComponent } from './enrollment/enrollment.component';
+import { ProfileComponent } from './profile/profile.component';
+import { GraduationComponent } from './graduation/graduation.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -26,7 +32,10 @@ import {MatTableModule} from "@angular/material/table";
     LoginComponent,
     NavbarComponent,
     RegistrationComponent,
-    CoursesComponent
+    CoursesComponent,
+    EnrollmentComponent,
+    ProfileComponent,
+    GraduationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,10 @@ import {MatTableModule} from "@angular/material/table";
     BrowserAnimationsModule,
     MatIconModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
