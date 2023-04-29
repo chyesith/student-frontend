@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import { RegistrationComponent } from './registration/registration.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { CoursesComponent } from './courses/courses.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -23,7 +25,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
