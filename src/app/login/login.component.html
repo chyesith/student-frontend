@@ -8,20 +8,20 @@
         <p>
         <mat-form-field class="full-width-input" appearance="outline">
           <mat-label>User Name</mat-label>
-          <input matInput>
+          <input [(ngModel)]="email" [ngModelOptions]="{standalone:true}" matInput>
         </mat-form-field>
         </p>
         <p>
         <mat-form-field class="full-width-input" appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
+          <input [(ngModel)]="password" [ngModelOptions]="{standalone:true}" matInput [type]="hide ? 'password' : 'text'">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
         </p>
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Login</button>
       </form>
       <a mat-button routerLink="/registration" routerLinkActive="active" >Click here to Sign Up</a>
     </mat-card-content>

@@ -1,5 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Course} from "../models/Course";
+import {StudentService} from "../services/student/student.service";
+import {StudentProfile} from "../models/StudentProfile";
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -8,30 +13,23 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
+  registrationForm: FormGroup;
   hide = true;
 
+  email: string = "";
+  password: string = "";
 
-  form: FormGroup;
-  private formSubmitAttempt: boolean ;
 
-  constructor(
-    private fb: FormBuilder,
-  ) {}
+  constructor(private studentService: StudentService , private router: Router) {
+  }
   ngOnInit(): void {
   }
 
-  isFieldInvalid(field: string) { // {6}
-    return (
-      (!this.form.get(field).valid && this.form.get(field).touched) ||
-      (this.form.get(field).untouched && this.formSubmitAttempt)
-    );
+  onSubmit() {
+    this.studentService.login(new StudentProfile(1, this.email, this.password,null, null, true, null))
+      .subscribe({next: () => {        this.router.navigateByUrl('/user');
+        } , error: () =>{ console.log(this)}});
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-     // this.authService.login(this.form.value); // {7}
-    }
-    this.formSubmitAttempt = true;             // {8}
-  }
 
 }
