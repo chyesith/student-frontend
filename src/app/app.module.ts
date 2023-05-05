@@ -22,6 +22,8 @@ import { GraduationComponent } from './graduation/graduation.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
+import {StudentService} from "./services/student/student.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -51,9 +53,10 @@ import {MatListModule} from "@angular/material/list";
     MatTableModule,
     MatChipsModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
