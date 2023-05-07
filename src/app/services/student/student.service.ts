@@ -26,7 +26,7 @@ export class StudentService {
   }
 
   login(userData: StudentProfile): Observable<StudentProfile> {
-    return this.http.post<StudentProfile>(this.baseUrl + "/login", JSON.stringify(userData), this.httpOptions)
+    return this.http.post<StudentProfile>(this.baseUrl + "/api/v1/student/login", JSON.stringify(userData), this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 

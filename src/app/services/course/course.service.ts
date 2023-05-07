@@ -31,11 +31,19 @@ export class CourseService {
   }
 
 
+  getCoursesById(sid: number): Observable<any> {
+
+    const options =
+      { params: new HttpParams().set('sid', sid) };
+    return this.http.get<any>(this.baseUrl+"/api/v1/courses/enrolled" , options)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+
   enrollCourses(sid: number, cid: number): Observable<Course> {
-    const body = new HttpParams();
-    body.set("courseId" , cid);
-    body.set("studentId" , sid);
-    return this.http.post<Course>(this.baseUrl + "/api/v1/courses/enroll/", body, this.httpOptions)
+
+    const  body  = { "courseId" : cid, "studentId" : sid}
+    return this.http.post<Course>(this.baseUrl + "/api/v1/courses/enroll", JSON.stringify(body), this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 

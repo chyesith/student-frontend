@@ -3,6 +3,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {CourseService} from "../services/course/course.service";
 import {StudentProfile} from "../models/StudentProfile";
 import {StudentService} from "../services/student/student.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class CoursesComponent implements OnInit {
   displayedColumns: string[] = ['courseName', 'description', 'courseFee', 'actions'];
   dataSource = new MatTableDataSource();
 
-  constructor(private courseService: CourseService, private studentService: StudentService) {
+  constructor(private courseService: CourseService, private studentService: StudentService ,private router : Router) {
   }
 
 
@@ -33,7 +34,10 @@ export class CoursesComponent implements OnInit {
 
   enrollCourse(cid: number,) {
     const sid = this.studentService.getId();
-    this.courseService.enrollCourses(cid, sid)
+    this.courseService.enrollCourses(cid, sid).subscribe((data) => {
+      console.log(data);
+      this.router.navigateByUrl('/enrollment');
+    })
   }
 }
 

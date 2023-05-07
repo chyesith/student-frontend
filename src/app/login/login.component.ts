@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
     this.studentService.login(new StudentProfile(1, this.email, this.password,null, null, true, null))
       .subscribe((data) => {
         this.studentService.setStudentId(data.id);
-        this.router.navigateByUrl('/user');
+        this.router.navigateByUrl('/courses');
         });
   }
 
