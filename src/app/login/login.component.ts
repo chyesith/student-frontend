@@ -27,8 +27,10 @@ export class LoginComponent implements OnInit{
 
   onSubmit() {
     this.studentService.login(new StudentProfile(1, this.email, this.password,null, null, true, null))
-      .subscribe({next: () => {        this.router.navigateByUrl('/user');
-        } , error: () =>{ console.log(this)}});
+      .subscribe((data) => {
+        this.studentService.setStudentId(data.id);
+        this.router.navigateByUrl('/user');
+        });
   }
 
 

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
+import {Course} from "../../models/Course";
+import {StudentProfile} from "../../models/StudentProfile";
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +12,36 @@ export class CourseService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods' : 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+      'X-Requested-With': 'XMLHttpRequest'
+
     }),
   };
-  baseUrl = 'http://localhost:3000';
+  //url for student srevice
+  baseUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }
 
-  getCourses(): Observable<Course> {
-    return this.http.get<Course>(this.baseUrl , this.httpOptions)
+  getCourses(): Observable<any> {
+    return this.http.get<any>(this.baseUrl+"/api/v1/courses" , this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 
 
-  handleError(error: any) {
+  enrollCourses(sid: number, cid: number): Observable<Course> {
+    const body = new HttpParams();
+    body.set("courseId" , cid);
+    body.set("studentId" , sid);
+    return this.http.post<Course>(this.baseUrl + "/api/v1/courses/enroll/", body, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+
+
+    handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error

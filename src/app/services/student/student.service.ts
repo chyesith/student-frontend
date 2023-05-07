@@ -7,12 +7,13 @@ import {StudentProfile} from "../../models/StudentProfile";
   providedIn: 'root'
 })
 export class StudentService {
+  studentID: number;
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods' : 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
       'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
       'X-Requested-With': 'XMLHttpRequest'
 
@@ -27,6 +28,15 @@ export class StudentService {
   login(userData: StudentProfile): Observable<StudentProfile> {
     return this.http.post<StudentProfile>(this.baseUrl + "/login", JSON.stringify(userData), this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
+  }
+
+
+  setStudentId(id: number) {
+    this.studentID = id;
+  }
+
+  getId(): number {
+    return this.studentID;
   }
 
 
